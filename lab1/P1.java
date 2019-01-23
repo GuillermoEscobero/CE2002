@@ -1,3 +1,8 @@
+/**
+ * Task 1 - Lab 1
+ * @author Escobero Hernandez Guillermo (N1804693E)
+ */
+
 import java.util.Scanner;
 
 public class P1 {
@@ -5,6 +10,8 @@ public class P1 {
     char character;
     Scanner sc = new Scanner(System.in);
 
+    // Read from standard input and get the first char.
+    // Converted to lower case to simplify the logic
     character = sc.next().toLowerCase().charAt(0);
 
     sc.close();
