@@ -3,10 +3,12 @@ import java.util.Scanner;
 public class Lab2p1 {
   public static void main(String[] args) {
     int choice;
+    int arg1, arg2;
+
     Scanner sc = new Scanner(System.in);
 
     do {
-      System.out.println("Perform the following methods:");
+      System.out.println("\nPerform the following methods:");
       System.out.println("1: multiplication test");
       System.out.println("2: quotient using division by substraction");
       System.out.println("3: remainder using division by substraction");
@@ -22,19 +24,33 @@ public class Lab2p1 {
           mulTest();
           break;
         case 2:
-          divide();
+          System.out.print("m = ");
+          arg1 = sc.nextInt();
+          System.out.print("n = ");
+          arg2 = sc.nextInt();
+          divide(arg1, arg2);
           break;
         case 3:
-          modulus();
+          System.out.print("m = ");
+          arg1 = sc.nextInt();
+          System.out.print("n = ");
+          arg2 = sc.nextInt();
+          modulus(arg1, arg2);
           break;
         case 4:
-          countDigits();
+          System.out.print("n : ");
+          arg1 = sc.nextInt();
+          countDigits(arg1);
           break;
         case 5:
-          position();
+          System.out.print("m = ");
+          arg1 = sc.nextInt();
+          System.out.print("n = ");
+          arg2 = sc.nextInt();
+          position(arg1, arg2);
           break;
         case 6:
-          extractOddDigits();
+          //extractOddDigits();
           break;
         case 7:
           System.out.println("Program terminating...");
@@ -67,8 +83,8 @@ public class Lab2p1 {
     int aux = m;
     int counter = 0;
 
-    while (m >= n) {
-      m -= n;
+    while (aux >= n) {
+      aux -= n;
       counter++;
     }
 
@@ -80,18 +96,19 @@ public class Lab2p1 {
     int aux = m;
     int counter = 0;
 
-    while (m >= n) {
+    while (aux >= n) {
       aux -= n;
       counter++;
     }
 
-    System.out.println(m + "%" + n + " = " + aux);
+    System.out.println(m + " % " + n + " = " + aux);
     return aux;
   }
 
   public static int countDigits(int n) {
     if (n <= 0) {
       System.out.println("Error input!!");
+      return -1;
     }
 
     int length = (int) (Math.log10(n) + 1);
@@ -100,9 +117,21 @@ public class Lab2p1 {
   }
 
   public static int position(int n, int digit) {
-    
+      int current;
+      int counter = 0;
+
+      while(0 < n && n != digit) {
+        current = n % 10;
+        n = n / 10;
+        counter++;
+      }
+
+      System.out.println("position = " + counter);
+      return counter;
   }
 
-  public static void extractOddDigits() {}
-
+  public static long extractOddDigits(long n) {
+      System.out.println("TODO: Implement this");
+      return 0;
+  }
 }
