@@ -43,14 +43,16 @@ public class Lab2p1 {
           countDigits(arg1);
           break;
         case 5:
-          System.out.print("m = ");
+          System.out.print("n : ");
           arg1 = sc.nextInt();
-          System.out.print("n = ");
+          System.out.print("digit : ");
           arg2 = sc.nextInt();
           position(arg1, arg2);
           break;
         case 6:
-          //extractOddDigits();
+          System.out.print("oddDigits = ");
+          arg1 = sc.nextInt();
+          extractOddDigits(arg1);
           break;
         case 7:
           System.out.println("Program terminating...");
@@ -117,21 +119,49 @@ public class Lab2p1 {
   }
 
   public static int position(int n, int digit) {
-      int current;
+      int current = -1;
       int counter = 0;
 
-      while(0 < n && n != digit) {
+      while(0 < n && current != digit) {
         current = n % 10;
         n = n / 10;
         counter++;
       }
 
-      System.out.println("position = " + counter);
-      return counter;
+      if (current == digit) {
+        System.out.println("position = " + counter);
+        return counter;
+      } else {
+        System.out.println("position = -1");
+        return -1;
+      }
   }
 
   public static long extractOddDigits(long n) {
-      System.out.println("TODO: Implement this");
-      return 0;
+      String result = "";
+      long current = -1;
+
+      if (n < 0) {
+        System.out.println("oddDigits = Error input!!");
+        return -1;
+      }
+
+      while(n > 0) {
+        current = n % 10;
+        n = n / 10;
+        if (current % 2 != 0) { // Is the digit odd?
+          //System.out.println("odd digit = " + current);
+          result = Long.toString(current) + result;
+        }
+      }
+
+      if (result.equals("")) {
+        System.out.println("oddDigits = -1");
+        return -1;
+      } else {
+        System.out.println("oddDigits = " + result);
+        return Long.parseLong(result);
+      }
+
   }
 }
