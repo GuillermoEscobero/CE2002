@@ -7,41 +7,44 @@ public class Plane {
     this.numEmptySeat = 12;
   }
 
-  public PlaneSeat[] sortSeats() {
+  private PlaneSeat[] sortSeats() {
+    PlaneSeat[] sorted = new PlaneSeat[12];
     return null;
   }
 
   public void showNumEmptySeats() {
-    System.out.println("Empty Seats: " + this.numEmptySeat);
+    System.out.println("There are " + this.numEmptySeat + " empty seats");
   }
 
   public void showEmptySeats() {
-    System.out.println("List of empty seats");
-    System.out.println("****************************");
-    System.out.println("Seat ID\tCustomer ID");
-
+    System.out.println("\tThe following seats are empty:");
     for (int i = 0; i < this.seat.length; i++) {
       if (!seat[i].isOccupied()) {
-        System.out.println("Seat No. " + seat[i].getSeatId());
+        System.out.println("\tSeatID " + seat[i].getSeatId());
       }
     }
   }
 
   public void showAssignedSeats(boolean bySeatId) {
-    System.out.println("List of assigned seats");
-    System.out.println("****************************");
-    System.out.println("Seat ID\tCustomer ID");
+    System.out.println("The seat assignments are as follow:");
+    PlaneSeat[] sorted;
 
-    // TODO: ORDER THE ARRAY HERE
+    if (!bySeatId) {
+      sorted = sortSeats();
+    }
 
     for (int i = 0; i < this.seat.length; i++) {
       if (seat[i].isOccupied()) {
-        System.out.println(seat[i].getSeatId()+ "\t" + seat[i].getCustomerId());
+        System.out.println("SeatID "+ seat[i].getSeatId() + "assigned to Customer ID " + seat[i].getCustomerId());
       }
     }
   }
 
   public void assignSeat(int seatId, int cust_id) {
+    System.out.println("\tAssigning Seat...");
+  }
+
+  public void unAssignSeat(int seatId) {
 
   }
 }
