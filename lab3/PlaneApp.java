@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class PlaneApp {
   public static void main(String[] args) {
+
+    Plane plane = new Plane();
+
     int choice;
     int arg1, arg2;
     Scanner sc = new Scanner(System.in);
@@ -23,13 +26,16 @@ public class PlaneApp {
 
       switch (choice) {
         case 1:
-
+          plane.showNumEmptySeats();
           break;
         case 2:
+          plane.showEmptySeats();
           break;
         case 3:
+          plane.showAssignedSeats(true);
           break;
         case 4:
+          plane.showAssignedSeats(false);
           break;
         case 5:
           System.out.println("\tAssigning Seat...");
@@ -37,13 +43,19 @@ public class PlaneApp {
           arg1 = sc.nextInt();
           System.out.print("\t\tPlease enter Customer ID: ");
           arg2 = sc.nextInt();
-          System.out.println();
+          plane.assignSeat(arg1, arg2);
           break;
         case 6:
+          System.out.print("\t\tEnter SeatID to unassign customer from: ");
+          arg1 = sc.nextInt();
+          plane.unAssignSeat(arg1);
           break;
         case 7:
           break;
       }
+
+      System.out.println();
+      System.out.println();
 
     } while (choice < 7);
 
