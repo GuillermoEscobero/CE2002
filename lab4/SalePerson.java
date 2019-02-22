@@ -37,7 +37,13 @@ public class SalePerson implements Comparable<SalePerson> {
     public int compareTo(SalePerson o) {
         int result;
         result = Integer.compare(totalSales, o.totalSales);
-        //result = (result == 0 ? 0 : lastName.compareTo(o.lastName));
+        if (result == 0) {
+            if (lastName.compareTo(o.lastName) < 0)
+                result++;
+            else
+                result--;
+        }
+
         return result;
     }
 
