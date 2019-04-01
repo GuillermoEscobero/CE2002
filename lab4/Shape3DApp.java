@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Shape2DApp {
+public class Shape3DApp {
     public static void main(String args[]) {
         int numberOfShapes;
         Shape[] shapes;
@@ -13,40 +13,37 @@ public class Shape2DApp {
         shapes = new Shape[numberOfShapes];
 
         for(int i = 0; i < numberOfShapes; i++) {
+          System.out.println();
             System.out.println("Type of shape?");
-            System.out.println("1) Square");
-            System.out.println("2) Rectangle");
-            System.out.println("3) Circle");
-            System.out.println("4) Triangle");
+            System.out.println("1) Cone");
+            System.out.println("2) Cylinder");
+            System.out.println("3) Sphere");
             System.out.print("> ");
 
             int type = sc.nextInt();
 
-            double arg1, arg2;
+            double arg1, arg2, arg3;
             switch(type) {
                 case 1:
-                    System.out.print("Side: ");
+                    System.out.print("Base: ");
                     arg1 = sc.nextDouble();
-                    shapes[i] = new Square(0, 0, arg1);
+                    System.out.print("Height: ");
+                    arg2 = sc.nextDouble();
+                    shapes[i] = new Pyramid(arg1, arg2);
                     break;
                 case 2:
-                    System.out.print("Height: ");
+                    System.out.print("Length: ");
                     arg1 = sc.nextDouble();
-                    System.out.print("Base: ");
+                    System.out.print("Breadth: ");
                     arg2 = sc.nextDouble();
-                    shapes[i] = new Rectangle(0, 0, arg1, arg2);
+                    System.out.print("Height: ");
+                    arg3 = sc.nextDouble();
+                    shapes[i] = new Cuboid(arg1, arg2, arg3);
                     break;
                 case 3:
                     System.out.print("Radius: ");
                     arg1 = sc.nextDouble();
-                    shapes[i] = new Circle(0, 0, arg1);
-                    break;
-                case 4:
-                    System.out.print("Height: ");
-                    arg1 = sc.nextDouble();
-                    System.out.print("Base: ");
-                    arg2 = sc.nextDouble();
-                    shapes[i] = new Triangle(0, 0, arg1, arg2);
+                    shapes[i] = new Sphere(arg1);
                     break;
                 default:
                     break;
@@ -69,7 +66,12 @@ public class Shape2DApp {
             System.out.println("TOTAL AREA: " + totalArea);
             break;
           case 2:
-            break;
+          double totalVolume = 0;
+          for (int i = 0; i < shapes.length; i++) {
+            totalVolume += shapes[i].calculateVolume();
+          }
+          System.out.println("TOTAL VOLUME: " + totalVolume);
+          break;
         }
 
     }

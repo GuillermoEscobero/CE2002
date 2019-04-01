@@ -18,5 +18,9 @@ class Square extends Shape {
         return side*side;
     }
 
+    public double calculateVolume() {
+      return 0;
+    }
+
 
 }

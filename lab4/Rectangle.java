@@ -28,5 +28,9 @@ class Rectangle extends Shape {
         return height*width;
     }
 
+    public double calculateVolume() {
+      return 0;
+    }
+
 
 }
